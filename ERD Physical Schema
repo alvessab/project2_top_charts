@@ -1,0 +1,43 @@
+Artist
+-
+artist_ID INT PK
+artist_name VARCHAR(500)
+
+Song
+-
+song_ID INT PK
+song_name  VARCHAR(500)
+artist_ID INT 
+company_ID
+songth_length
+songwriters
+album
+
+
+Source
+-
+company_ID INT PK
+company_name VARCHAR(500)
+
+
+Rank
+-
+song_ID INT
+artist_ID INT 
+apple_rank INT
+spotify_rank INT
+collection_date datetime
+
+
+Spotify_Info
+-
+song_ID INT
+artist_ID INT 
+streams INT
+release_date date
+days
+
+Album_ID
+-
+id
+name
