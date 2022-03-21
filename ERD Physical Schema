@@ -5,39 +5,31 @@ artist_name VARCHAR(500)
 
 Song
 -
-song_ID INT PK
 song_name  VARCHAR(500)
-artist_ID INT 
-company_ID
-songth_length
-songwriters
-album
+song_ID INT PK
+artist_ID INT FK >- Artist.artist_ID
+song_length VARCHAR(10)
+album_ID INT FK >- Album_ID.album_ID
 
-
-Source
+Album_ID
 -
-company_ID INT PK
-company_name VARCHAR(500)
+album_ID INT PK
+albums VARCHAR(500)
 
 
 Rank
 -
-song_ID INT
-artist_ID INT 
+song_ID INT FK >- Song.song_ID
 apple_rank INT
 spotify_rank INT
-collection_date datetime
+spotify_list_date datetime
+apple_date_retrieved datetime
 
 
 Spotify_Info
 -
-song_ID INT
-artist_ID INT 
-streams INT
-release_date date
-days
-
-Album_ID
--
-id
-name
+song_ID INT FK >- Song.song_ID
+stream_count INT
+spotify_peak_rank INT
+spotify_prev_rank INT
+spotify_streak_days INT
