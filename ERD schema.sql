@@ -5,7 +5,7 @@
 CREATE TABLE "artist" (
     "artist_ID" INT   NOT NULL,
     "artist_name" VARCHAR(500)   NOT NULL,
-    "lastUpdate" datetime   NOT NULL,
+    "lastUpdate" timestamp default localtimestamp  NOT NULL,
     CONSTRAINT "pk_artist" PRIMARY KEY (
         "artist_ID"
      )
@@ -14,7 +14,7 @@ CREATE TABLE "artist" (
 CREATE TABLE "provider" (
     "provider_ID" INT   NOT NULL,
     "provider_name" VARCHAR(50)   NOT NULL,
-    "lastUpdate" datetime   NOT NULL,
+    "lastUpdate" timestamp default localtimestamp  NOT NULL,
     CONSTRAINT "pk_provider" PRIMARY KEY (
         "provider_ID"
      )
@@ -22,9 +22,9 @@ CREATE TABLE "provider" (
 
 CREATE TABLE "album" (
     "album_ID" INT   NOT NULL,
-    "artist_ID" INT   NOT NULL,
+    "artist_ID" INT,
     "album_title" VARCHAR(500)   NOT NULL,
-    "lastUpdate" datetime   NOT NULL,
+    "lastUpdate" timestamp default localtimestamp  NOT NULL,
     CONSTRAINT "pk_album" PRIMARY KEY (
         "album_ID"
      )
@@ -32,33 +32,33 @@ CREATE TABLE "album" (
 
 CREATE TABLE "song" (
     "song_ID" INT   NOT NULL,
-    "artist_ID" INT   NOT NULL,
-    "album_ID" INT   NOT NULL,
+    "artist_ID" INT,
+    "album_ID" INT,
     "song_name" VARCHAR(500)   NOT NULL,
-    "song_length" VARCHAR(10)   NOT NULL,
-    "lastUpdate" datetime   NOT NULL,
+    "song_length" VARCHAR(10),
+    "lastUpdate" timestamp default localtimestamp  NOT NULL,
     CONSTRAINT "pk_song" PRIMARY KEY (
         "song_ID"
      )
 );
 
 CREATE TABLE "rank_Junction" (
-    "rank_ID" INT   NOT NULL,
+    "rank_ID" SERIAL    NOT NULL,
     "song_ID" INT   NOT NULL,
     "provider_ID" INT   NOT NULL,
     "rank" INT   NOT NULL,
-    "date_retrieved" datetime   NOT NULL,
-    "lastUpdate" datetime   NOT NULL
+    "date_retrieved" timestamp  NOT NULL,
+    "lastUpdate" timestamp default localtimestamp  NOT NULL
 );
 
 CREATE TABLE "spotify_Info" (
-    "ID" INT   NOT NULL,
+    "ID" SERIAL   NOT NULL,
     "song_ID" INT   NOT NULL,
-    "stream_count" INT   NOT NULL,
-    "spotify_peak_rank" INT   NOT NULL,
-    "spotify_prev_rank" INT   NOT NULL,
-    "spotify_streak_days" INT   NOT NULL,
-    "lastUpdate" datetime   NOT NULL,
+    "stream_count" INT,
+    "spotify_peak_rank" INT,
+    "spotify_previous_rank" INT,
+    "spotify_streak_days" INT,
+    "lastUpdate" timestamp default localtimestamp  NOT NULL,
     CONSTRAINT "pk_spotify_Info" PRIMARY KEY (
         "ID"
      )
