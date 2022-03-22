@@ -1,51 +1,55 @@
-
-
-Artist
+artist
 -
 artist_ID INT PK
 artist_name VARCHAR(500)
 lastUpdate datetime
 
-Provider
+provider
 -
 provider_ID INT PK
 provider_name VARCHAR(50)
 lastUpdate datetime
 
-Album
+album
 -
 album_ID INT PK
-artist_ID INT FK >- Artist.artist_ID
 album_title VARCHAR(500)
 lastUpdate datetime
 
+albumartist
+-
+ID SERIAL PK
+album_ID INT FK >- album.album_ID
+artist_ID INT FK >- artist.artist_ID
+lastUpdate datetime
 
-Song
+
+song
 -
 song_ID INT PK
-artist_ID INT FK >- Artist.artist_ID
-album_ID INT FK >- Album.album_ID
+artist_ID INT FK >- artist.artist_ID
+album_ID INT FK >- album.album_ID
 song_name  VARCHAR(500)
 song_length VARCHAR(10)
 lastUpdate datetime
 
-Rank_Junction
+rank_junction
 -
-rank_ID INT
+ID SERIAL PK
 song_ID INT FK >- Song.song_ID
-provider_ID FK >- Provider.provider_ID
+provider_ID INT FK >- Provider.provider_ID
 rank INT
 date_retrieved datetime
 lastUpdate datetime
 
 
 
-Spotify_Info
+spotify_info
 -
-ID INT PK
+ID SERIAL PK
 song_ID INT FK >- Song.song_ID
 stream_count INT
 spotify_peak_rank INT
-spotify_prev_rank INT
+spotify_previous_rank INT
 spotify_streak_days INT
 lastUpdate datetime
